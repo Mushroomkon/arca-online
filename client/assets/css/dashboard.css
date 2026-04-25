@@ -1,0 +1,459 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background: #0A0A16;
+    color: #fff;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    background: #1c1c29;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    
+}
+
+.container {
+    margin-bottom: 40px;
+    width: 85%;
+    padding: 20px;
+    margin: 0 auto; 
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    border-radius: 15px;
+    justify-content: center; 
+    align-items: center;   
+    padding-left: 20px;
+    padding-left: 20px;
+}
+
+
+
+
+.container:focus {
+    outline: none;
+    border-color: #3f4868; 
+}
+
+.container input, .container select,  .container button {
+    padding: 8px 12px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    border: 1px solid #555;
+    background: #1a1a2e; 
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.container input, .container select {
+    min-width: 130px;
+    min-height: 30px;
+
+}
+
+#categories option[disabled] {
+    color: rgba(255, 255, 255, 0.4) 
+}
+
+
+#categories:not(:focus):invalid {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+#categories option {
+    color: #fff;
+}
+.container #categories {
+    appearance: none;      
+    cursor: pointer;
+    transition: 0.3s;
+ 
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.container button {
+    background-color: #d9534f;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.container button:hover {
+    background-color: #c9302c;
+}
+
+
+.container select {
+    appearance: none;          
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 25px;
+    border: 1px solid #555;
+    background: #1a1a2e;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 130px;
+    min-height: 30px;
+}
+
+
+
+
+.table-wrapper {
+    width: 85%;
+    overflow-x: auto;
+    border: 1.5px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    margin: 0 auto; 
+}
+
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 7px; 
+    width: 100%;
+    min-width: 600px;
+    
+}
+
+th {
+    color: #ffffff;
+    padding: 8px 20px;
+    text-align: left;
+    font-weight: normal;
+}
+
+
+td {
+    background: #3d495d;
+    padding: 10px 20px;
+    color: white;
+}
+
+
+
+td:first-child {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+td:last-child {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+
+.action button {
+    padding: 6px 12px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+a.active {
+    color: #5bc0de;
+    font-weight: bold;
+}
+
+.editBtn, .blue {
+    background-color: #5bc0de;
+    
+}
+
+.editBtn, .blue:hover {
+    background-color: #31b0d5;
+}
+
+.deleteBtn, .red {
+    background-color: #d9534f;
+}
+
+.deleteBtn, .red, .logout button:hover {
+    background-color: #c9302c;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+
+.popup, .update {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 20;
+    min-width: 300px;
+}
+
+.popup p {
+    margin-bottom: 15px;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button-container button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.button-container button:hover {
+    opacity: 0.8;
+}
+
+
+@media (max-width: 700px) {
+    th, td {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    form input, form select, form button {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    th, td {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+
+    form input, form select, form button {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+
+    .popup, .update {
+        width: 90%;
+        min-width: unset;
+    }
+}
+
+header {
+    width: 100%;
+    color: #333454;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    
+}
+
+
+header .left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #000;
+
+}
+
+.logout {
+    margin-left: auto;
+}
+
+header nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #6e6e6e;
+    font-size: 1rem;
+    
+}
+
+header .logout {
+    display: inline;
+    margin-left: 20px;
+
+}
+header .logout button {
+    display: inline;
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem;
+}
+
+
+
+header .logo img {
+    margin-top: 10%;
+    width: 80px;    
+    height: auto;   
+}
+
+
+
+main{
+    padding: 20px;
+    }
+
+.container:focus {
+    outline: none;
+    border-color: #3f4868;
+}
+
+
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    z-index: 999;
+}
+
+.popup, .update {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1e1e2f;
+    color: #fff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    display: none;
+    z-index: 1000;
+    width: 350px;
+    max-width: 90%;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.popup p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+.update input[type="text"],
+.update input[type="number"],
+.update select {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background: #2a2a3f;
+    color: #fff;
+    font-size: 14px;
+}
+
+.update select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+
+button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.2s;
+    color: white;
+}
+
+.update input[type="text"],
+.update input[type="number"],
+.update select {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background: #2a2a3f;
+    color: #fff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.update input:focus,
+.update select:focus {
+    outline: none;
+    border-color: #ffffff;
+    
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    color: #00bcd4;
+}
+header nav a.active {
+    color: #17e4ff;
+    font-weight: bolder;
+}

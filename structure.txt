@@ -1,0 +1,66 @@
+arca-online.
+│   index.php
+│   README.md
+│   structure.txt
+│
+├───client
+│   │   index.php
+│   │
+│   ├───admin
+│   │       admin.php
+│   │
+│   ├───assets
+│   │   ├───css
+│   │   │       counter.css
+│   │   │       dashboard.css
+│   │   │       index.css
+│   │   │       inventory.css
+│   │   │       sales.css
+│   │   │       style.css
+│   │   │
+│   │   ├───img
+│   │   │       arca.png
+│   │   │       logo.png
+│   │   │
+│   │   └───js
+│   │           login.js
+│   │           register.js
+│   │
+│   ├───auth
+│   │       login.html
+│   │       register.html
+│   │
+│   └───pages
+│           counter.php
+│           dashboard.php
+│           inventory.php
+│           sales.php
+│
+├───config
+│       connect.php
+│
+├───database
+│       inventorydb-schema.png
+│       inventorydb.sql
+│
+└───server
+    │   control.php
+    │
+    ├───auth
+    │       authenticate.php
+    │       login.php
+    │       logout.php
+    │       signup.php
+    │
+    ├───counter
+    │       cancel.php
+    │       decrease.php
+    │       punch.php
+    │       push.php
+    │       receipt.php
+    │
+    └───inventory
+            add.php
+            delete.php
+            fetch.php
+            update.php
