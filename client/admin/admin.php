@@ -30,10 +30,9 @@ if (!$actor || $actor !== 'admin_renier') {
    header("Location: ../pages/dashboard.php");
     exit();
 }
-
-
 $sort  = sanitize_text($_GET['sort'] ?? 'name');
 $users = get_all_users($conn, $sort);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,7 +108,7 @@ $users = get_all_users($conn, $sort);
     <div class="logo"><img src="../assets/img/arca.png" alt="Arca Logo"></div>
     <nav></nav>
     <div class="logout">
-        <form action="../../server/auth/logout.php" method="post">
+        <form action="../index.php" method="post">
             <button type="submit">Logout</button>
         </form>
     </div>
@@ -130,6 +129,7 @@ $users = get_all_users($conn, $sort);
                 <th>User Name</th>
                 <th>Created Date</th>
                 <th>Total Sales</th>
+                <th>Last Login</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -140,8 +140,9 @@ $users = get_all_users($conn, $sort);
                     <td><?= htmlspecialchars($user['user_name'], ENT_QUOTES, 'UTF-8') ?></td>
                     <td><?= htmlspecialchars($user['user_date'], ENT_QUOTES, 'UTF-8') ?></td>
                     <td>₱<?= number_format($user['total_sales'], 2) ?></td>
+                    <td><?= htmlspecialchars($user['last_login'], ENT_QUOTES, 'UTF-8') ?></td>
                     <td>
-                        <form class="delete-form" action="../../server/admin/control.php" method="POST" style="display:inline-block;">
+                        <form class="delete-form" action="../../server/control.php" method="POST" style="display:inline-block;">
                             <input type="hidden" name="user_id" value="<?= (int)$user['user_id'] ?>">
                             <button class="delete-button" type="button">Delete</button>
                         </form>
@@ -149,7 +150,7 @@ $users = get_all_users($conn, $sort);
                 </tr>
                 <?php endforeach; ?>
             <?php else: ?>
-                <tr><td colspan="4" style="text-align:center;">No users found.</td></tr>
+                <tr><td colspan="5" style="text-align:center;">No users found.</td></tr>
             <?php endif; ?>
         </tbody>
     </table>

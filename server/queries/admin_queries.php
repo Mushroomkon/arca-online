@@ -19,6 +19,7 @@ function get_all_users(mysqli $conn, string $sort): array {
             u.user_id,
             u.user_name,
             u.user_date,
+            u.last_login,
             IFNULL(SUM(s.total_sales), 0) AS total_sales
         FROM users u
         LEFT JOIN sales s ON u.user_id = s.user_id_fk
