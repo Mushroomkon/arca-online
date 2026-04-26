@@ -1,6 +1,6 @@
 <?php
 session_start();
 session_destroy();
-header("Location: ../../client/auth/login.html");
+header("Location: ../../client/auth/login.php");
 exit();
 ?>

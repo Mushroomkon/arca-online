@@ -24,7 +24,7 @@ $stmt->execute();
 $actor = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 
-if (!$actor || $actor['user_name'] !== 'admin') {
+if (!$actor || $actor['user_name'] !== 'admin_renier') {
     header("Location: ../pages/dashboard.php");
     exit();
 }
