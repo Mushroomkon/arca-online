@@ -276,6 +276,60 @@
         .mock-bar-track { flex: 1; height: 6px; background: var(--bg); border-radius: 99px; overflow: hidden; }
         .mock-bar-fill { height: 100%; border-radius: 99px; background: var(--cyan); }
 
+        /* ─── Hero Mockup Mobile Adjustments ─── */
+@media (max-width: 430px) {
+    .hero-mockup {
+        margin-top: 30px; 
+        width: 100%;
+    }
+
+    .mockup-body {
+        grid-template-columns: 1fr; 
+        padding: 12px; /* Tighter padding for small screens */
+        gap: 8px;
+    }
+
+    .mock-card {
+        padding: 12px;
+    }
+
+    /* Primary values (e.g., "$1,200") */
+    .mock-card-value {
+        font-size: 1.1rem; /* Dropped from 1.2rem */
+    }
+
+    /* Small labels (e.g., "TOTAL REVENUE") */
+    .mock-card-label {
+        font-size: 0.6rem; /* Dropped from 0.72rem */
+        letter-spacing: 0.05em;
+    }
+
+    /* Subtext (e.g., "+12% from last month") */
+    .mock-card-sub {
+        font-size: 0.65rem; /* Dropped from 0.75rem */
+    }
+
+    /* Bar chart labels */
+    .mock-bar-label {
+        width: 45px;
+        font-size: 0.6rem; /* Scaled down to match labels */
+    }
+
+    /* Header text if applicable */
+    .logo-name {
+        font-size: 1.1rem;
+    }
+
+    /* Navigation links */
+    header nav a {
+        font-size: 0.75rem;
+    }
+
+    .mockup-bar {
+        padding: 8px 12px;
+    }
+}
+
         /* ── STATS STRIP ── */
         .stats-strip {
             position: relative;
@@ -307,6 +361,7 @@
         }
 
         .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+
 
         /* ── FEATURES ── */
         .section {
