@@ -28,8 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT * FROM users WHERE user_email = '$email' AND user_password = '$password'";
     $result = mysqli_query($conn, $sql);
 
-       
-
     if (mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
 
@@ -41,6 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
     }
+//hello
 
     header("Location: ../../client/auth/login.html?msg=" . urlencode("Invalid email or password"));
     exit();
