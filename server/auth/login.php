@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if ($email === "admin_renier" && $password === "admin321") {
+    if ($email === "adminadmin@gmail.com" && $password === "Admin321") {
         $_SESSION['user_id'] = 0;
         $_SESSION['user_name'] = "admin_renier";
         header("Location: ../../client/admin/admin.php");
