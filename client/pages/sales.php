@@ -30,22 +30,34 @@ $sales_records = get_sales_records($conn, $user_id);
     <link rel="stylesheet" href="../assets/css/sales.css">
 </head>
 <body>
-
+<div class="glow-orb glow-orb-1"></div>
+<div class="glow-orb glow-orb-2"></div>
+<div class="glow-orb glow-orb-3"></div>
 <header>
-    <div class="left">
-        <div class="logo"><img src="../assets/img/arca.png" alt="Arca Logo"></div>
-        <nav>
-            <a href="dashboard.php">Dashboard</a>
-            <a href="inventory.php">Inventory</a>
-            <a href="counter.php">Counter</a>
-            <a href="sales.php" class="active">Sales Report</a>
-        </nav>
-    </div>
+    <div class="logo"><img src="../assets/img/arca.png" alt="logo"></div>
+
+    <nav id="nav-menu">
+        <a href="dashboard.php">Dashboard</a>
+        <a href="counter.php">Counter</a>
+        <a href="sales.php" class="active">Sales Report</a>
+        <form action="../../server/auth/logout.php" method="post" class="nav-logout">
+            <button type="submit">Logout</button>
+        </form>
+    </nav>
+
+    <!-- Desktop logout -->
     <div class="logout">
         <form action="../../server/auth/logout.php" method="post">
             <button type="submit">Logout</button>
         </form>
     </div>
+
+    <!-- Hamburger on the far right -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 </header>
 
 <div class="dashboard-container">
@@ -53,17 +65,17 @@ $sales_records = get_sales_records($conn, $user_id);
     <div class="left_box">
 
         <div class="card overall-sales">
-            <p>Overall Sales</p>
-            <h1>₱<?= number_format($totals['total_sales'], 2) ?></h1>
+            <p style="color: #5bc0de;">Overall Sales</p>
+            <h2>₱<?= number_format($totals['total_sales'], 2) ?></h2>
         </div>
 
         <div class="card cost">
-            <p>Total Cost</p>
+            <p style="color: #c9302c;">Total Cost</p>
             <h2>₱<?= number_format($totals['total_cost'], 2) ?></h2>
         </div>
 
         <div class="card most-bought">
-            <p>Top 5 Most Bought Items</p>
+            <p style="font-size: 1.7rem;">Top 5 Most Bought Items</p>
             <table>
                 <thead>
                     <tr>
@@ -115,5 +127,15 @@ $sales_records = get_sales_records($conn, $user_id);
     </div>
 
 </div>
+<script>
+    // ─── Hamburger ─────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const navMenu   = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navMenu.classList.toggle('open');
+    });
+</script>
 </body>
 </html>

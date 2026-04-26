@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arca — Inventory & Sales Platform</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="img/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <style>
@@ -805,10 +805,6 @@
 <!-- ── FOOTER ── -->
 <footer>
     <p>© <?= date('Y') ?> Arca. All rights reserved.</p>
-    <div class="footer-links">
-        <a href="auth/login.html">Login</a>
-        <a href="auth/signup.html">Signup</a>
-    </div>
 </footer>
 
 <script>
