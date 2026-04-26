@@ -276,6 +276,60 @@
         .mock-bar-track { flex: 1; height: 6px; background: var(--bg); border-radius: 99px; overflow: hidden; }
         .mock-bar-fill { height: 100%; border-radius: 99px; background: var(--cyan); }
 
+        /* ─── Hero Mockup Mobile Adjustments ─── */
+@media (max-width: 430px) {
+    .hero-mockup {
+        margin-top: 30px; 
+        width: 100%;
+    }
+
+    .mockup-body {
+        grid-template-columns: 1fr; 
+        padding: 12px; /* Tighter padding for small screens */
+        gap: 8px;
+    }
+
+    .mock-card {
+        padding: 12px;
+    }
+
+    /* Primary values (e.g., "$1,200") */
+    .mock-card-value {
+        font-size: 1.1rem; /* Dropped from 1.2rem */
+    }
+
+    /* Small labels (e.g., "TOTAL REVENUE") */
+    .mock-card-label {
+        font-size: 0.6rem; /* Dropped from 0.72rem */
+        letter-spacing: 0.05em;
+    }
+
+    /* Subtext (e.g., "+12% from last month") */
+    .mock-card-sub {
+        font-size: 0.65rem; /* Dropped from 0.75rem */
+    }
+
+    /* Bar chart labels */
+    .mock-bar-label {
+        width: 45px;
+        font-size: 0.6rem; /* Scaled down to match labels */
+    }
+
+    /* Header text if applicable */
+    .logo-name {
+        font-size: 1.1rem;
+    }
+
+    /* Navigation links */
+    header nav a {
+        font-size: 0.75rem;
+    }
+
+    .mockup-bar {
+        padding: 8px 12px;
+    }
+}
+
         /* ── STATS STRIP ── */
         .stats-strip {
             position: relative;
@@ -307,6 +361,7 @@
         }
 
         .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 6px; }
+
 
         /* ── FEATURES ── */
         .section {
@@ -590,6 +645,107 @@
             .mockup-body { grid-template-columns: 1fr 1fr; }
             footer { flex-direction: column; text-align: center; }
         }
+
+        /* ─── Mobile Optimization for iPhone 12 Pro (390x844) ─── */
+@media (max-width: 430px) {
+    /* 1. Header & Navigation */
+    header {
+        padding: 12px 20px;
+    }
+
+    header nav {
+        gap: 15px; /* Tighter gap for small screens */
+    }
+
+    header nav a:not(.nav-cta) {
+        display: none; /* Hide non-essential links to prevent overlap */
+    }
+
+    .logo-name {
+        font-size: 1.1rem; /* Smaller logo text */
+    }
+
+    .logo-wrap img {
+        width: 50px;
+    }
+
+    /* 2. Hero Section Scaling */
+    .hero {
+        padding: 60px 20px 40px;
+        min-height: auto;
+    }
+
+    .hero-eyebrow {
+        font-size: 0.65rem;
+        padding: 4px 12px;
+        margin-bottom: 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem; /* Scaled for 390px width */
+        line-height: 1.1;
+    }
+
+    .hero-sub {
+        font-size: 0.95rem;
+        margin-top: 16px;
+    }
+
+    /* 3. Button Resizing */
+    .hero-actions {
+        flex-direction: column; /* Stack buttons to prevent clipping */
+        width: 100%;
+        max-width: 280px; /* Limits button width so they aren't "too big" */
+        margin: 32px auto 0;
+    }
+
+    .btn-primary, .btn-ghost {
+        padding: 12px 24px;
+        font-size: 0.88rem;
+        justify-content: center;
+        width: 100%; /* Uniform width for stacked look */
+    }
+
+    .nav-cta {
+        padding: 6px 14px !important;
+        font-size: 0.8rem !important;
+    }
+
+    /* 4. Grid & Layout Adjustments */
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .mockup-body {
+        grid-template-columns: 1fr; /* Single column for stats on mobile */
+        padding: 16px;
+    }
+
+    .stat-item {
+        min-width: 100%;
+        padding: 24px 10px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    .steps {
+        margin-top: 40px;
+    }
+
+    .highlight-visual {
+        padding: 15px;
+    }
+
+    /* 5. Footer Padding */
+    footer {
+        padding: 30px 20px;
+        gap: 20px;
+    }
+}
     </style>
 </head>
 <body>
@@ -606,14 +762,15 @@
         
     </div>
     <nav>
+        <a href="#home">Home</a>
         <a href="#features">Features</a>
         <a href="#how">How it works</a>
-        <a href="auth/login.html" class="nav-cta">Sign In</a>
+        <a href="auth/login.php" class="nav-cta">Sign In</a>
     </nav>
 </header>
 
 <!-- ── HERO ── -->
-<section class="hero">
+<section class="hero" id="home">
     <div class="hero-eyebrow">Inventory & Sales Platform</div>
 
     <h1>
@@ -630,7 +787,7 @@
             Get started free
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="auth/login.html" class="btn-ghost">Sign in to dashboard</a>
+        <a href="auth/login.php" class="btn-ghost">Sign in to dashboard</a>
     </div>
 
     <!-- dashboard mockup -->
@@ -792,11 +949,11 @@
     </div>
 </div>
 
-<!-- ── CTA ── -->
+
 <div class="cta-section">
     <h2 class="reveal">Ready to take control<br>of your inventory?</h2>
     <p class="reveal">Join Arca and start managing your store the smart way.</p>
-    <a href="auth/signup.html" class="btn-primary reveal">
+    <a href="auth/register.html" class="btn-primary reveal">
         Create your free account
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>

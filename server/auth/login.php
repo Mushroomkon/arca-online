@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 //hello
 
-    header("Location: ../../client/auth/login.html?msg=" . urlencode("Invalid email or password"));
+    header("Location: ../../client/auth/login.php?msg=" . urlencode("Invalid email or password"));
     exit();
 }
 ?>
