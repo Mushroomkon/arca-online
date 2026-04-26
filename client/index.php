@@ -792,7 +792,7 @@
     </div>
 </div>
 
-<!-- ── CTA ── -->
+
 <div class="cta-section">
     <h2 class="reveal">Ready to take control<br>of your inventory?</h2>
     <p class="reveal">Join Arca and start managing your store the smart way.</p>
