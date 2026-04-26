@@ -1,121 +1,89 @@
-
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
-    background: #0A0A16;
     font-family: sans-serif;
 }
 
-.action button {
-    padding: 6px 12px;
-    margin-right: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-    font-size: 13px;
-    transition: 0.3s;
-    margin-bottom: 10PX;
+body {
+    background: #080811;  /* was #0A0A16 */
+    color: #fff;
+    padding: 0;
 }
 
-.editBtn, .blue {
-    background-color: #5bc0de;
+/* ── NOISE OVERLAY ── */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
 }
-
-.editBtn, .blue :hover {
-    background-color: #31b0d5;
+/* ── AMBIENT GLOWS ── */
+.glow-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
 }
+.glow-orb-1 { width: 500px; height: 500px; background: rgba(0,212,232,0.06); top: -100px; left: -100px; }
+.glow-orb-2 { width: 400px; height: 400px; background: rgba(124,106,255,0.06); bottom: 20%; right: -100px; }
+.glow-orb-3 { width: 300px; height: 300px; background: rgba(0,212,232,0.04); top: 50%; left: 40%; }
 
-.deleteBtn, .red {
-    background-color: #d9534f;
-}
-
-.deleteBtn, .red, .logout :hover {
-    background-color: #c9302c;
-}
-
-table {
-    border-collapse: separate;
-    border-spacing: 0 7px;
-    padding: 20px;
+/* --- UPDATED SEARCH BAR (Left Aligned) --- */
+.search-bar {
+    display: flex;
+    justify-content: flex-start; /* Keeps it left */
     width: 100%;
-    min-width: 0; 
+    max-width: 400px;
+    margin: 0 0 20px 0; /* Removes 'auto' to keep it left */
 }
 
-.table-wrapper {
+#itemSearch {
     width: 100%;
-    overflow-x: auto;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-th, td {
-    text-align: left;
-    padding: 8px 20px;  
-    font-weight: normal;
-}
+/* --- TABLE ROW SHADOWS --- */
 td {
-    background-color: #3d495d;
+    background: #3d495d;
+    padding: 12px 25px;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for individual rows */
 }
 
-td:first-child {
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
-}
-td:last-child {
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-}
+/* Preserve rounded corners for row pills */
+td:first-child { border-top-left-radius: 50px; border-bottom-left-radius: 50px; }
+td:last-child { border-top-right-radius: 50px; border-bottom-right-radius: 50px; }
 
-
-@media (max-width: 700px) {
-    td:nth-child(1),
-    td:nth-child(2) {
-        width: 120px;
-    }
-    td:nth-child(3),
-    td:nth-child(4),
-    td:nth-child(5) {
-        width: 60px;
-    }
-
-    th, td {
-        padding: 6px 12px;
-    }
+/* --- BUTTON SHADOWS --- */
+button {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
 }
 
-
-@media (max-width: 500px) {
-    td:nth-child(1),
-    td:nth-child(2) {
-        width: 100px;
-    }
-    td:nth-child(3),
-    td:nth-child(4),
-    td:nth-child(5) {
-        width: 40px;
-    }
-
-    th, td {
-        padding: 4px 8px; 
-        font-size: 14px;
-    }
+button:hover {
+    box-shadow: 0 0 20px rgba(23, 228, 255, 0.4);
+    transform: scale(1.05);
 }
-
 
 header {
     width: 100%;
     background: #1c1c29;
-    padding: 12px 20px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
     margin-bottom: 20px;
-    
 }
 
 header .left {
@@ -123,25 +91,6 @@ header .left {
     align-items: center;
     gap: 20px;
     color: #000;
-
-}
-
-.logout {
-    margin-left: auto;
-}
-header button {
-    display: inline;
-    text-decoration: none;
-    color: #000;
-    font-size: 1rem;
-}
-
-
-
-
-header .logo {
-    font-size: 1.1rem;
-    font-weight: 600;
 }
 
 header nav a {
@@ -149,92 +98,8 @@ header nav a {
     text-decoration: none;
     color: #000;
     font-size: 1rem;
-    
 }
-
-header .logout {
-    display: inline;
-    margin-left: 20px;
-    
-}
-
-
-
-
-header .logo img {
-    margin-top: 10%;
-    width: 80px;    
-    height: auto;   
-}
-
-
-nav{
-    justify-content: flex-end;
-}
-
-
-main {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap; 
-    align-items: flex-start; 
-}
-
-.left-box,
-.right-box {
-    color: #e4e4e4;
-}
-
-.left-box {
-    width: 60vw;
-    min-height: 200px; 
-    border-radius: 15px;
-    border: 1.5px solid #fff;
-    padding: 10px; 
-}
-
-.right-box {
-    width: 25vw;
-    height: auto; 
-    border-radius: 15px;
-    border: 1.5px solid #fff;
-    padding: 25px;
-
-}
-
-
-
-@media (max-width: 1027px) {
-    .left-box {
-        width: 100%;
-        height: auto;
-    }
-    .right-box {
-        width: 100%;
-        height: auto;
-    }
-}
-
-
-.rightbottom-box {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    gap: 10px;
-}
-.rightbottom-box button {
-    padding: 8px 16px;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-
+/* ─── Buttons ─────────────────────────────────────────── */
 button {
     padding: 10px 20px;
     border-radius: 8px;
@@ -245,21 +110,495 @@ button {
     transition: 0.2s;
 }
 
+.action button {
+    padding: 6px 12px;
+    margin-right: 5px;
+    border-radius: 5px;
+    color: #000;
+    font-size: 13px;
+    transition: 0.3s;
+    margin-bottom: 10px;
+}
+
+.blue {
+    background-color: #5bc0de;
+    color: white;
+}
+.blue:hover {
+    background-color: #31b0d5;
+}
+
+.red {
+    background-color: #d9534f;
+    color: white;
+}
+.red:hover {
+    background-color: #c9302c;
+}
+
+.green {
+    background-color: #5cb85c;
+    color: white;
+}
+.green:hover {
+    background-color: #4cae4c;
+}
+
+/* ─── Header ──────────────────────────────────────────── */
+header {
+    width: 100%;
+    background: #1c1c29;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 100;
+}
+
+header .left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header .logo img {
+    width: 80px;
+    height: auto;
+    display: block;
+}
+
+/* ─── Nav ─────────────────────────────────────────────── */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 header nav a {
     color: #fff;
     text-decoration: none;
     margin-right: 20px;
     font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.2s;
 }
 
 header nav a:hover {
     color: #00bcd4;
 }
 
-header {
-    color: #333454;
-}
 header nav a.active {
     color: #17e4ff;
     font-weight: bolder;
+}
+
+/* Hide logout inside nav on desktop */
+.nav-logout {
+    display: none;
+}
+
+/* ─── Desktop logout ──────────────────────────────────── */
+.logout {
+    margin-left: auto;
+}
+
+header .logout button {
+    background: transparent;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+header .logout button:hover {
+    background: #c9302c;
+    color: #fff;
+}
+
+/* ─── Hamburger ───────────────────────────────────────── */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    transition: background 0.2s;
+    z-index: 200;
+}
+
+.hamburger:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    background: #fff;
+    border-radius: 3px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Animate to X when open */
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* ─── Table ───────────────────────────────────────────── */
+table {
+    border-collapse: separate;
+    border-spacing: 0 7px;
+    padding: 20px;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px 20px;
+    font-weight: normal;
+}
+
+td {
+    background-color: #3d495d;
+    color: #e4e4e4;
+}
+
+th {
+    color: #e4e4e4;
+}
+
+td:first-child {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+td:last-child {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+/* ─── Layout ──────────────────────────────────────────── */
+main {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.left-box,
+.right-box {
+    color: #e4e4e4;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); 
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.left-box:hover, 
+.right-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+}
+
+.left-box {
+    width: 60vw;
+    min-height: 200px;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+.right-box {
+    width: 25vw;
+    height: auto;
+    padding: 25px;
+}
+
+.right-box h1 {
+    margin-bottom: 15px;
+}
+
+.no-items {
+    text-align: center;
+    padding: 20px 0;
+    color: #aaa;
+}
+
+/* ─── Receipt header ──────────────────────────────────── */
+.receipt-header {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.receipt-header h2 {
+    font-size: 1.2rem;
+    color: #e4e4e4;
+}
+
+.receipt-header p {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+/* ─── Bottom buttons ──────────────────────────────────── */
+.rightbottom-box {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 15px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.rightbottom-box button {
+    padding: 8px 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ─── Responsive ──────────────────────────────────────── */
+@media (max-width: 1027px) {
+    .left-box,
+    .right-box {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Show hamburger, hide desktop nav and logout */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    /* Hide desktop logout */
+    header > .logout {
+        display: none;
+    }
+
+    /* Nav becomes a dropdown */
+    #nav-menu {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #1c1c29;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        z-index: 99;
+    }
+
+    #nav-menu.open {
+        display: flex;
+    }
+
+    #nav-menu a {
+        width: 100%;
+        padding: 12px 24px;
+        margin: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        font-size: 1rem;
+    }
+
+    #nav-menu a:hover {
+        background: rgba(255,255,255,0.05);
+    }
+
+    /* Show logout inside nav on mobile */
+    .nav-logout {
+        display: block;
+        width: 100%;
+        padding: 12px 24px;
+    }
+
+    .nav-logout button {
+        background: transparent;
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.3);
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+    }
+
+    .nav-logout button:hover {
+        background: rgba(255,255,255,0.1);
+    }
+
+    th, td {
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 500px) {
+    th, td {
+        padding: 4px 8px;
+        font-size: 13px;
+    }
+
+    .rightbottom-box {
+        flex-direction: column;
+    }
+
+    .rightbottom-box button,
+    .rightbottom-box form {
+        width: 100%;
+    }
+
+    .rightbottom-box form button {
+        width: 100%;
+    }
+}
+
+/* ─── Print styles ────────────────────────────────────── */
+@media print {
+    @page {
+        size: 4in 6in;
+        margin: 0;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+    #printable-receipt,
+    #printable-receipt * {
+        visibility: visible;
+    }
+
+    #printable-receipt {
+        position: fixed; /* Forces it to the very top edge */
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: 4in;
+        padding: 0.2in; /* Keeps your internal spacing safe */
+        margin: 0 !important;
+        background: #fff;
+        font-family: monospace;
+        font-size: 12px;
+        color: #000;
+    }
+
+    html, body {
+        height: 100%;
+        overflow: hidden;
+    }
+    header, .left-box, .rightbottom-box, .glow-orb {
+        display: none !important;
+    }
+
+    #printable-receipt .receipt-header {
+        text-align: center;
+        margin-bottom: 12px;
+        border-bottom: 1px dashed #000;
+        padding-bottom: 10px;
+    }
+
+    #printable-receipt .receipt-header h2 {
+        font-size: 18px;
+        font-weight: bold;
+        color: #000;
+        margin-bottom: 4px;
+    }
+
+    #printable-receipt .receipt-header p {
+        font-size: 11px;
+        color: #333;
+    }
+
+    #printable-receipt table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        padding: 0;
+        min-width: unset;
+        table-layout: fixed;
+    }
+
+    #printable-receipt th,
+    #printable-receipt td {
+        padding: 6px 4px;
+        text-align: left;
+        background: none;
+        color: #000;
+        font-size: 12px;
+        white-space: normal;
+        word-break: break-word;
+        border-bottom: 1px dashed #999;
+
+        /* remove pill shape from counter table styles */
+        border-radius: 0 !important;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+    }
+
+    #printable-receipt th {
+        font-weight: bold;
+        border-bottom: 2px solid #000;
+        font-size: 12px;
+    }
+
+    /* Column widths */
+    #printable-receipt table th:nth-child(1),
+    #printable-receipt table td:nth-child(1) { width: 38%; } /* Item */
+    #printable-receipt table th:nth-child(2),
+    #printable-receipt table td:nth-child(2) { width: 22%; } /* Price */
+    #printable-receipt table th:nth-child(3),
+    #printable-receipt table td:nth-child(3) { width: 10%; } /* Qty */
+    #printable-receipt table th:nth-child(4),
+    #printable-receipt table td:nth-child(4) { width: 30%; } /* Total */
+
+    #printable-receipt tfoot th {
+        border-top: 2px solid #000;
+        border-bottom: none;
+        padding-top: 8px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    #printable-receipt .no-items {
+        text-align: center;
+        padding: 20px;
+        color: #000;
+    }
+
+    #printable-receipt::after {
+        content: "Thank you for your purchase!";
+        display: block;
+        text-align: center;
+        margin-top: 16px;
+        padding-top: 10px;
+        border-top: 1px dashed #000;
+        font-size: 12px;
+        color: #333;
+    }
 }

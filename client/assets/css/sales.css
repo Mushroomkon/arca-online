@@ -6,10 +6,32 @@
 }
 
 body {
-    background: #0A0A16;
+    background: #080811;  /* was #0A0A16 */
     color: #fff;
     padding: 0;
 }
+
+/* ── NOISE OVERLAY ── */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+}
+/* ── AMBIENT GLOWS ── */
+.glow-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+}
+.glow-orb-1 { width: 500px; height: 500px; background: rgba(0,212,232,0.06); top: -100px; left: -100px; }
+.glow-orb-2 { width: 400px; height: 400px; background: rgba(124,106,255,0.06); bottom: 20%; right: -100px; }
+.glow-orb-3 { width: 300px; height: 300px; background: rgba(0,212,232,0.04); top: 50%; left: 40%; }
 
 
 header {
@@ -61,6 +83,12 @@ header .logo img {
     margin: 20px;
 }
 
+td {
+    background: #3d495d;
+    padding: 12px 25px;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for individual rows */
+}
 
 .left_box {
     width: 400px;
@@ -69,20 +97,25 @@ header .logo img {
     gap: 1rem;
 }
 
-
 .right {
     flex: 1;
 }
 
 
 .card {
-    
     color: #fff;
     padding: 1.5rem 2rem;
-    border-radius: 15px;
-    border: 1.5px solid rgb(255, 255, 255);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+}
 
 .card h1, .card h2, .card h3 {
     margin-top: 0.5rem;
@@ -90,7 +123,7 @@ header .logo img {
 
 .card p {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 2.2rem;
 }
 
 
@@ -167,9 +200,6 @@ header .logo img {
     border-bottom-right-radius: 50px;
 }
 
-
-
-
 button {
     padding: 10px 20px;
     border-radius: 8px;
@@ -178,6 +208,17 @@ button {
     font-weight: bold;
     font-size: 14px;
     transition: 0.2s;
+}
+
+/* --- BUTTON SHADOWS --- */
+button {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: 0 0 20px rgba(23, 228, 255, 0.4);
+    transform: scale(1.05);
 }
 
 .blue {
@@ -249,4 +290,219 @@ header {
 header nav a.active {
     color: #17e4ff;
     font-weight: bolder;
+}
+
+/* ─── Header ──────────────────────────────────────────── */
+header {
+    width: 100%;
+    background: #1c1c29;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 100;
+}
+
+header .left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header .logo img {
+    width: 80px;
+    height: auto;
+    display: block;
+}
+
+/* ─── Nav ─────────────────────────────────────────────── */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+header nav a:hover {
+    color: #00bcd4;
+}
+
+header nav a.active {
+    color: #17e4ff;
+    font-weight: bolder;
+}
+
+/* Hide logout inside nav on desktop */
+.nav-logout {
+    display: none;
+}
+
+/* ─── Desktop logout ──────────────────────────────────── */
+.logout {
+    margin-left: auto;
+}
+
+header .logout button {
+    background: transparent;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+header .logout button:hover {
+    background: #c9302c;
+    color: #fff;
+}
+
+/* ─── Hamburger ───────────────────────────────────────── */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    transition: background 0.2s;
+    z-index: 200;
+}
+
+.hamburger:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    background: #fff;
+    border-radius: 3px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Animate to X when open */
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* ─── Responsive ──────────────────────────────────────── */
+@media (max-width: 1027px) {
+    .left-box,
+    .right-box {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Show hamburger, hide desktop nav and logout */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    /* Hide desktop logout */
+    header > .logout {
+        display: none;
+    }
+
+    /* Nav becomes a dropdown */
+    #nav-menu {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #1c1c29;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        z-index: 99;
+    }
+
+    #nav-menu.open {
+        display: flex;
+    }
+
+    #nav-menu a {
+        width: 100%;
+        padding: 12px 24px;
+        margin: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        font-size: 1rem;
+    }
+
+    #nav-menu a:hover {
+        background: rgba(255,255,255,0.05);
+    }
+
+    /* Show logout inside nav on mobile */
+    .nav-logout {
+        display: block;
+        width: 100%;
+        padding: 12px 24px;
+    }
+
+    .nav-logout button {
+        background: transparent;
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.3);
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+    }
+
+    .nav-logout button:hover {
+        background: rgba(255,255,255,0.1);
+    }
+
+    th, td {
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 500px) {
+    th, td {
+        padding: 4px 8px;
+        font-size: 13px;
+    }
+
+    .rightbottom-box {
+        flex-direction: column;
+    }
+
+    .rightbottom-box button,
+    .rightbottom-box form {
+        width: 100%;
+    }
+
+    .rightbottom-box form button {
+        width: 100%;
+    }
 }
