@@ -6,7 +6,11 @@
 <title>Signup - Arca</title>
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/logo.png">
 <link rel="stylesheet" href="../assets/css/style.css">
+<<<<<<< HEAD
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+=======
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+>>>>>>> 479dbbcf1e5e4ee5942e6d7a0938ae3860b6c732
 </head>
 <div>
 <div class="glow-orb glow-orb-1"></div>
@@ -18,7 +22,7 @@
         <nav>
             <a href="../index.php">Home</a>
             <a href="login.php">Login</a>
-            <a href="">Register</a>
+            <a href="register.php">Register</a>
 
         </nav>
     </div>

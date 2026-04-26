@@ -8,10 +8,10 @@ $email    = sanitize_email($_POST['email'] ?? '');
 $password = sanitize_password($_POST['password'] ?? '');
 
 if (!$email) {
-    redirect_with_msg('../../client/auth/login.html', 'Invalid email format.');
+    redirect_with_msg('../../client/auth/login.php', 'Invalid email format.');
 }
 if (!$password) {
-    redirect_with_msg('../../client/auth/login.html', 'Password is required.');
+    redirect_with_msg('../../client/auth/login.php', 'Password is required.');
 }
 
 
