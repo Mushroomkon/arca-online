@@ -10,11 +10,7 @@ ini_set('display_errors', 1);
 <title>Login - Arca</title>
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/logo.png">
 <link rel="stylesheet" href="../assets/css/style.css">
-<<<<<<< HEAD:client/auth/login.html
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-=======
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
->>>>>>> upstream/main:client/auth/login.php
 </head>
 <body>
 <div class="glow-orb glow-orb-1"></div>
