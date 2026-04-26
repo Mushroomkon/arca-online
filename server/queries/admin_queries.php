@@ -22,7 +22,7 @@ function get_all_users(mysqli $conn, string $sort): array {
             IFNULL(SUM(s.total_sales), 0) AS total_sales
         FROM users u
         LEFT JOIN sales s ON u.user_id = s.user_id_fk
-        WHERE u.user_name != 'admin'
+        WHERE u.user_name != 'admin_renier'
         GROUP BY u.user_id
         ORDER BY $order_by
     ");
@@ -34,7 +34,7 @@ function get_all_users(mysqli $conn, string $sort): array {
 
 
 function delete_user(mysqli $conn, int $user_id): bool {
-    $stmt = $conn->prepare("DELETE FROM users WHERE user_id = ? AND user_name != 'admin'");
+    $stmt = $conn->prepare("DELETE FROM users WHERE user_id = ? AND user_name != 'admin_renier'");
     $stmt->bind_param("i", $user_id);
     $ok = $stmt->execute() && $stmt->affected_rows > 0;
     $stmt->close();

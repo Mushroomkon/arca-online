@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require_once __DIR__ . '/../../config/connect.php';
 require_once __DIR__ . '/../../server/utils/sanitize.php';
@@ -24,8 +23,11 @@ $stmt->execute();
 $actor = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 
-if (!$actor || $actor['user_name'] !== 'admin') {
-    header("Location: ../pages/dashboard.php");
+
+$actor = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null;
+ 
+if (!$actor || $actor !== 'admin_renier') {
+   header("Location: ../pages/dashboard.php");
     exit();
 }
 

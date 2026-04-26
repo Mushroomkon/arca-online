@@ -10,7 +10,7 @@ if (isset($_POST['signup'])) {
     $username = sanitize_text($_POST['username'] ?? '');
     $password = sanitize_password($_POST['password'] ?? '');
     $confirm  = sanitize_password($_POST['confirm'] ?? '');
-
+    $user_date = date('Y-m-d');
     
     if (!$email) {
         redirect_with_msg('../../client/auth/register.html', 'Invalid email format. Use Gmail, Yahoo, Outlook, or Hotmail.');
@@ -49,11 +49,11 @@ if (isset($_POST['signup'])) {
     
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-    $stmt = $conn->prepare("INSERT INTO users (user_email, user_name, user_password) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO users (user_email, user_name, user_password, user_date) VALUES (?, ?, ?,?)");
     if (!$stmt) {
         redirect_with_msg('../../client/auth/register.html', 'Server error. Please try again.');
     }
-    $stmt->bind_param("sss", $email, $username, $hashed_password);
+    $stmt->bind_param("ssss", $email, $username, $hashed_password, $user_date);
 
     if ($stmt->execute()) {
         $new_user_id = $stmt->insert_id;
