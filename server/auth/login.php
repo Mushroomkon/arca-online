@@ -8,12 +8,20 @@ $email    = sanitize_email($_POST['email'] ?? '');
 $password = sanitize_password($_POST['password'] ?? '');
 
 if (!$email) {
+<<<<<<< HEAD
     redirect_with_msg('../../client/auth/login.php', 'Invalid email format.');
 }
 if (!$password) {
     redirect_with_msg('../../client/auth/login.php', 'Password is required.');
 }
 
+=======
+    redirect_with_msg('../../client/auth/login.html', 'Invalid email format.');
+       }
+        if (!$password) {
+    redirect_with_msg('../../client/auth/login.html', 'Password is required.');
+        }
+>>>>>>> ec7508091ec4ae51c75e9152cc3d8006b84052ea
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
@@ -26,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    $sql = "SELECT * FROM users WHERE user_email = '$email' LIMIT 1";
+    $sql = "SELECT * FROM users WHERE user_email = '$email' AND user_password = '$password'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) == 1) {
@@ -38,7 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../../client/pages/dashboard.php");
             exit();
         }
+
     }
+//hello
 
     header("Location: ../../client/auth/login.php?msg=" . urlencode("Invalid email or password"));
     exit();

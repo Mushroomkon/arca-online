@@ -1,9 +1,9 @@
 <?php
 
 session_start();
-require_once __DIR__ . '/../../config/connect.php';
-require_once __DIR__ . '/../utils/sanitize.php';
-require_once __DIR__ . '/../queries/admin_queries.php';
+require_once __DIR__ . '/../config/connect.php';
+require_once __DIR__ . '/../server/utils/sanitize.php';
+require_once __DIR__ . '/../server/queries/admin_queries.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../../client/auth/login.html");
@@ -24,7 +24,8 @@ $stmt->execute();
 $actor = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 
-if (!$actor || $actor['user_name'] !== 'admin') {
+$actor = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null;
+if (!$actor || $actor !== 'admin_renier') {
     header("Location: ../../client/pages/dashboard.php");
     exit();
 }
